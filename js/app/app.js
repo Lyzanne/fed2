@@ -1,66 +1,13 @@
+﻿// Define FED2 namespace
+var FED2 = FED2 || {};
 
-(function ($) {
-    var contacts = [
-        { name: "Contact 1", address: "1, a street, a town, a city, AB12 3CD", tel: "0123456789", email: "anemail@me.com", type: "family" },
-        { name: "Contact 2", address: "1, a street, a town, a city, AB12 3CD", tel: "0123456789", email: "anemail@me.com", type: "family" },
-        { name: "Contact 3", address: "1, a street, a town, a city, AB12 3CD", tel: "0123456789", email: "anemail@me.com", type: "friend" },
-        { name: "Contact 4", address: "1, a street, a town, a city, AB12 3CD", tel: "0123456789", email: "anemail@me.com", type: "colleague" },
-        { name: "Contact 5", address: "1, a street, a town, a city, AB12 3CD", tel: "0123456789", email: "anemail@me.com", type: "family" },
-        { name: "Contact 6", address: "1, a street, a town, a city, AB12 3CD", tel: "0123456789", email: "anemail@me.com", type: "colleague" },
-        { name: "Contact 7", address: "1, a street, a town, a city, AB12 3CD", tel: "0123456789", email: "anemail@me.com", type: "friend" },
-        { name: "Contact 8", address: "1, a street, a town, a city, AB12 3CD", tel: "0123456789", email: "anemail@me.com", type: "family" }
-    ];
-
-
-var Contact = Backbone.Model.extend({
-    defaults: {
-        photo: "img/placeholder.png"
-    }
-});
-
-var Directory = Backbone.Collection.extend({
-    model: Contact
-});
+// Define ranking data
+FED2.poolData = [
+	{ team: "Chasing", Win: "2", Lost: "2", Sw: "7", Sl: "9", Pw: "35", Pl: "39"},
+	{ team: "Boomsquad", Win: "2", Lost: "2", Sw: "9", Sl: "8", Pw: "36", Pl: "34"},
+	{ team: "Burning Snow", Win: "3", Lost: "1", Sw: "11", Sl: "4", Pw: "36", Pl: "23"},
+	{ team: "Beast Amsterdam", Win: "2", Lost: "2", Sw: "6", Sl: "8", Pw: "30", Pl: "34"},
+	{ team: "Amsterdam Money Gang", Win: "1", Lost: "3", Sw: "6", Sl: "10", Pw: "30", Pl: "37"}
+];
 
 
-
-var ContactView = Backbone.View.extend({
-    tagName: "article",
-    className: "contact-container",
-    template: $("#contactTemplate").html(),
-    render: function () {
-        var tmpl = _.template(this.template);
-        this.$el.html(tmpl(this.model.toJSON()));
-        return this;
-    }
-});
-
-   //define master view
-    var DirectoryView = Backbone.View.extend({
-        el: $("#contacts"),
-
-        initialize: function () {
-            this.collection = new Directory(contacts);
-            this.render();
-        },
-
-        render: function () {
-            var that = this;
-            _.each(this.collection.models, function (item) {
-                that.renderContact(item);
-            }, this);
-        },
-
-        renderContact: function (item) {
-            var contactView = new ContactView({
-                model: item
-            });
-            this.$el.append(contactView.render().el);
-        }
-    });
-
-
-var directory = new DirectoryView();
-
-
-} (jQuery));

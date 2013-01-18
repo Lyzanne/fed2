@@ -1,30 +1,27 @@
-// # Define SET view #
-	FED2.SetView = Backbone.View.extend({
-	    // Define element (this.el)  
-		tagName: "tr",
-		
-		// Set reference to template
-	    template: $("#setTemplate").html(),
-		
-		// Initialize view *(backbone method)*
-		initialize: function () {
-			this.logMessage("Set view initialized");
-		},
-		
-		// Render view *(backbone method)*
-	    render: function () {
-			// Store template in variable
-	        var tmpl = _.template(this.template);
-			
-			// Inject the rendered tempate into the views element 
-	        $(this.el).html(tmpl(this.model.toJSON()));
-	
-			return this;
-	    },
-	
-		// Log message *(custom method)*
-		logMessage: function (message) {
-			console.log(message);
-		}
-	});
-	
+    // define individual tournament view
+FED2.SetView = Backbone.View.extend({
+    tagName: "tr",
+    template: $("#setTemplate").html(),
+    className: "ding",
+    
+       // Attach event handler to view elements
+    events: {
+        "click a.delete": "deleteSet"
+    },
+    
+    
+    // Delete een set, de model wordt verwijderd
+    deleteSet: function (e) {
+        e.preventDefault();
+                
+        this.model.destroy();
+        this.remove();
+    },
+    
+    // Render view
+    render: function () {
+        var tmpl = _.template(this.template);;
+        this.$el.html(tmpl(this.model.toJSON()));
+        return this;
+    }
+});

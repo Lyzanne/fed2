@@ -16,3 +16,4 @@ FED2.gameData = [
     { set: "4", team1: "Boomsquad", team1Score: "2", team2: "Burning Snow", team2Score: "4"},
     { set: "5", team1: "Boomsquad", team1Score: "4", team2: "Burning Snow", team2Score: "3"}
 ];
+

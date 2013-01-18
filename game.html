@@ -15,7 +15,7 @@
                 <h1><span>Tournament:</span>Threesome</h1>
             </header>
 
-            <article>
+            <article id="game">
                 <header>
                     <h1>Pool A - Score Updates - Boomsquad vs. Burning Snow</h1>
                 </header>
@@ -33,15 +33,43 @@
                     </tr>
                 </table>
 
-                <table id="game">
+                <table id="superset">
                     <tr>
-                        <th>Set</th>
-                        <th>Team</th>
-                        <th>Points</th>
-                        <th>Team</th>
+                        <th id="set" class="sort current">Set</th>
+                        <th id="team1">Team</th>
+                        <th id="team1Score" class="sort">Points</th>
+                        <th id="stipe">-</th>
+                        <th id="team2Score" class="sort">Points</th>
+                        <th id="team2">Team</th>
                     </tr>
-
                 </table>
+
+
+                <form id="addSet" action="#">
+
+                    <label for="set">Set: </label>
+                    <input id="set">
+
+                    </br>
+
+                    <label for="team1">Team: </label>
+                    <input id="team1">
+
+                    <label for="team1Score"> Score: </label>
+                    <input id="team1Score">
+
+                    </br>
+
+                    <label for="team2"> Team: </label>
+                    <input id="team2">
+
+                    <label for="team2Score"> Score: </label>
+                    <input id="team2Score">
+
+                    <button id="add"> Toevoegen </button>
+                
+                </form>
+
             </article>
         </div>  
         
@@ -49,10 +77,12 @@
         <script id="setTemplate" type="text/template">
             <td><%= set %></td>
             <td><%= team1 %></td>
-            <td><%= team1Score %> - <%= team2Score %></td>
-            <td><%= team1 %></td>
+            <td><%= team1Score %></td> <td>-</td> <td><%= team2Score %></td>
+            <td><%= team2 %></td>
+            <td><a href="#" class="delete">Delete</a></td>
         </script>
         
+
         <!-- Libraries -->
         <script src="js/lib/jquery-1.8.3.min.js"></script>
         <script src="js/lib/json2.js"></script>

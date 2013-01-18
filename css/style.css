@@ -44,3 +44,11 @@ pre, pre header{
 	font-size: 80%;
 	line-height: 100%;
 }
+
+.sort {
+	cursor: pointer;
+}
+
+.sort.current {
+	background: grey;
+}
